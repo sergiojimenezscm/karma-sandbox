@@ -22,7 +22,7 @@ module.exports = function(grunt) {
             },
             watch: {
                 autoWatch: true,
-                reporters: 'super-dots'
+                reporters: ['super-dots', 'coverage']
             },
             once: {
                 singleRun: true,
@@ -32,15 +32,24 @@ module.exports = function(grunt) {
                 singleRun: true,
                 reporters: 'super-dots',
                 browsers: ['PhantomJS']
-            }
+            },
+            coverage: {
+                singleRun: true,
+                reporters: ['coverage']
+            },
+        },
+        jshint: {
+            all: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js']
         }
     });
 
-    // Load the plugin that provides the "uglify" task.
+    // Load npm tasks
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-mocha-phantomjs');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-karma');
 
     // Default task(s).
     grunt.registerTask('default', ['uglify']);
-}
+    grunt.registerTask('default', ['jshint']);
+};

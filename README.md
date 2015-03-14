@@ -24,5 +24,17 @@ For continuous delivery, run:
 grunt karma:continuous
 ```
 
+For code coverage, run:
+```
+grunt karma:coverage
+```
+
+Other available commands are:
+
+JS linting. For that, run:
+```
+grunt jshint
+```
+
 ## License
 MIT

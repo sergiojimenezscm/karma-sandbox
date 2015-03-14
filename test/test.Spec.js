@@ -1,3 +1,5 @@
+/*jshint expr: true*/
+
 describe("Mocha chai example test", function() {
     it('should fail', function() {
         expect(true).to.be.false;
