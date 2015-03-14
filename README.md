@@ -36,5 +36,10 @@ JS linting. For that, run:
 grunt jshint
 ```
 
+The following task can be run for continuous delivery. It calls JSHint, runs tests and create a JSON as code coverage output:
+```
+grunt continuous
+```
+
 ## License
 MIT

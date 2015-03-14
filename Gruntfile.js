@@ -30,8 +30,12 @@ module.exports = function(grunt) {
             },
             continuous: {
                 singleRun: true,
-                reporters: 'super-dots',
-                browsers: ['PhantomJS']
+                reporters: ['super-dots', 'coverage'],
+                browsers: ['PhantomJS'],
+                coverageReporter: {
+                    type: 'json',
+                    dir: 'output/coverage/'
+                },
             },
             coverage: {
                 singleRun: true,
@@ -40,16 +44,43 @@ module.exports = function(grunt) {
         },
         jshint: {
             all: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js']
+        },
+        plato: {
+            options: {
+                jshint: false
+            },
+            src: {
+                files: {
+                    'output/plato': ['src/**/*.js']
+                }
+            },
+            test: {
+                files: {
+                    'output/plato': ['test/**/*.js']
+                }
+            },
         }
     });
 
     // Load npm tasks
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-mocha-phantomjs');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-karma');
+    grunt.loadNpmTasks('grunt-mocha-phantomjs');
+    grunt.loadNpmTasks('grunt-plato');
 
     // Default task(s).
     grunt.registerTask('default', ['uglify']);
     grunt.registerTask('default', ['jshint']);
+
+    // Grunt tasks
+    grunt.registerTask(
+        'continuous',
+        'Task to be run in continuous integration',
+        function () {
+            grunt.task.run(
+                'jshint',
+                'karma:continuous'
+            );
+        });
 };
