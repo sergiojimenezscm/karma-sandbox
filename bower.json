@@ -1,0 +1,23 @@
+{
+  "name": "karma-sandbox",
+  "version": "0.0.1",
+  "homepage": "https://github.com/vincepal/karma-sandbox",
+  "authors": [
+    "vincepal"
+  ],
+  "description": "Sandbox project for Karma",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "karma"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
